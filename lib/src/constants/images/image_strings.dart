@@ -1,0 +1,9 @@
+const String WelcomeScreenImage="assets/images/micky.jpeg";
+const String GoogleLogo="assets/images/google_logo.png";
+const String PersonLogo="assets/images/person_logo.jpg";
+const String cat1="assets/images/cat1.png";
+const String cat2="assets/images/cat2.png";
+const String cat3="assets/images/cat3.png";
+const String cat4="assets/images/cat4.png";
+const String cat5="assets/images/cat5.png";
+const String cat6="assets/images/cat6.png";
