@@ -3,6 +3,7 @@ import 'package:first_demo_flutter/src/features/screens/login/login_screen.dart'
 import 'package:flutter/material.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-
+        primarySwatch: Colors.green,
         appBarTheme: AppBarTheme(
         color: AppColors.MAIN_COLOR,
 
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect

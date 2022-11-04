@@ -13,6 +13,8 @@ class LoginScreen extends StatelessWidget {
   var emailText=TextEditingController();
   var passwordText=TextEditingController();
 
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -32,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         FormHeaderWidget(image: WelcomeScreenImage, text1: "Welcome", text2: "Make it work, Make it right, Make it fast"),
-                        LoginForm(emailText,passwordText),
+                        LoginForm(),
                         LoginButtomWidget()
                       ],
                     ),
