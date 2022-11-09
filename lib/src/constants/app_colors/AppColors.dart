@@ -15,4 +15,5 @@ class AppColors {
   static const Color DARKER_GREEN = Color(0xFF0B452C);
   static const Color HIGHTLIGHT_DEFAULT = Color(0xFF5A8E12);
   static const Color LIGHTER_GREEN = Color(0xFFC1E09E);
+  static const Color Img_BG = Color(0xFFD31145);
 }

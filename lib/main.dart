@@ -1,9 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:first_demo_flutter/firebase_options.dart';
 import 'package:first_demo_flutter/src/constants/app_colors/AppColors.dart';
 import 'package:first_demo_flutter/src/features/screens/login/login_screen.dart';
+import 'package:first_demo_flutter/src/localizations/service.dart';
+import 'package:first_demo_flutter/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 void main() {
-
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
   runApp(const MyApp());
 }
 
@@ -13,23 +21,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    SharedPrefernceHelper.init();
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.green,
-        appBarTheme: AppBarTheme(
-        color: AppColors.MAIN_COLOR,
-
-      )),
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
+          primarySwatch: Colors.green,
+          appBarTheme: AppBarTheme(
+            color: AppColors.MAIN_COLOR,
+          )),
       home: LoginScreen(),
     );
   }
@@ -37,7 +45,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -113,7 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen())),
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginScreen())),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
         backgroundColor: AppColors.MAIN_COLOR,

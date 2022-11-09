@@ -37,6 +37,7 @@ class SharedPrefernceHelper {
     await sharedPreferences.setStringList(userListSharedPref, list);
   }
 
+
 // Read Data
   static Future<String?> getUserName() async {
     return sharedPreferences.getString(nameSharedPref);
@@ -52,5 +53,13 @@ class SharedPrefernceHelper {
   }
   static Future<List<String>?> getUserList() async{
     return sharedPreferences.getStringList(userListSharedPref);
+  }
+  static Future<String?> getUserListString(index) async{
+    return sharedPreferences.getStringList(userListSharedPref)?.elementAt(index);
+  }
+
+  //Delete Data
+  static Future<void> deleteUserListfromIndex(index) async{
+    sharedPreferences.getStringList(userListSharedPref)?.removeAt(index);
   }
 }
