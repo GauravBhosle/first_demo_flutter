@@ -1,40 +1,41 @@
-
 import 'package:first_demo_flutter/src/features/screens/home/setting_screen.dart';
+import 'package:first_demo_flutter/src/features/screens/home/user_list/user_list_screen.dart';
+import 'package:first_demo_flutter/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/app_colors/AppColors.dart';
-import '../../../utils/food_catagorie_provider/catagorie_provider.dart';
-import '../../models/food_catagories_todo.dart';
-import 'cart_screen.dart';
 import 'fav_screen.dart';
 import 'food_list_screen.dart';
 
-class HomeScreen extends StatefulWidget{
-
+class HomeScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomeScreen();
-
 }
 
-class _HomeScreen extends State<HomeScreen>{
-  int pageIndex=0;
-  
-  final screen=[
-    FoodListScreen(),
-    CartScreen(),
-    FavScreen(),
-    Settings()
-  ];
+class _HomeScreen extends State<HomeScreen> {
+  int pageIndex = 0;
+
+  final screen = [UserListScreen(), FoodListScreen(), FavScreen(), Settings()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              AuthenticationRepository.instance.logout();
+            },
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
       body: Container(
-        child:
-            screen[pageIndex],
+        child: screen[pageIndex],
       ),
       bottomNavigationBar: buttomNav(context),
     );
@@ -42,16 +43,12 @@ class _HomeScreen extends State<HomeScreen>{
 
   Container buttomNav(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow:[
-            BoxShadow(
-                blurRadius: 20,
-                color: Colors.black.withOpacity(0.2),
-                offset: Offset.zero
-            )
-          ]
-      ),
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(
+            blurRadius: 20,
+            color: Colors.black.withOpacity(0.2),
+            offset: Offset.zero)
+      ]),
       height: 80,
       padding: EdgeInsets.only(bottom: 10),
       child: Row(
@@ -60,22 +57,13 @@ class _HomeScreen extends State<HomeScreen>{
           ClipOval(
             child: Material(
               child: IconButton(
-                icon: Icon(Icons.home, color: AppColors.MAIN_COLOR,),
-                onPressed: (){
+                icon: Icon(
+                  Icons.home,
+                  color: AppColors.MAIN_COLOR,
+                ),
+                onPressed: () {
                   setState(() {
-                    pageIndex=0;
-                  });
-                },
-              ),
-            ),
-          ),
-          ClipOval(
-            child:  Material(
-              child: IconButton(
-                icon: Icon(Icons.shopping_cart, color: AppColors.MAIN_COLOR,),
-                onPressed: (){
-                  setState(() {
-                    pageIndex=1;
+                    pageIndex = 0;
                   });
                 },
               ),
@@ -84,10 +72,13 @@ class _HomeScreen extends State<HomeScreen>{
           ClipOval(
             child: Material(
               child: IconButton(
-                icon: Icon(Icons.favorite, color: AppColors.MAIN_COLOR,),
-                onPressed: (){
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: AppColors.MAIN_COLOR,
+                ),
+                onPressed: () {
                   setState(() {
-                    pageIndex=2;
+                    pageIndex = 1;
                   });
                 },
               ),
@@ -96,10 +87,28 @@ class _HomeScreen extends State<HomeScreen>{
           ClipOval(
             child: Material(
               child: IconButton(
-                icon: Icon(Icons.settings, color: AppColors.MAIN_COLOR,),
-                onPressed: (){
+                icon: Icon(
+                  Icons.favorite,
+                  color: AppColors.MAIN_COLOR,
+                ),
+                onPressed: () {
                   setState(() {
-                    pageIndex=3;
+                    pageIndex = 2;
+                  });
+                },
+              ),
+            ),
+          ),
+          ClipOval(
+            child: Material(
+              child: IconButton(
+                icon: Icon(
+                  Icons.settings,
+                  color: AppColors.MAIN_COLOR,
+                ),
+                onPressed: () {
+                  setState(() {
+                    pageIndex = 3;
                   });
                 },
               ),
