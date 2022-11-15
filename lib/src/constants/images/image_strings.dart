@@ -7,3 +7,4 @@ const String cat3="assets/images/cat3.png";
 const String cat4="assets/images/cat4.png";
 const String cat5="assets/images/cat5.png";
 const String cat6="assets/images/cat6.png";
+const String insta="assets/images/insta.png";

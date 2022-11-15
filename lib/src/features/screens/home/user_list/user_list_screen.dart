@@ -62,11 +62,9 @@ class _UserListScreenState extends State<UserListScreen> {
                         ),
                         IconButton(
                           onPressed: () async {
-                            deleteRow(index);
 
-                            await SharedPrefernceHelper.deleteUserListfromIndex(index).then((value) => setState((){
-                             getList();
-                            }));
+                            showAboutDialog(context: context,index: index);
+
                           },
                           icon: Icon(Icons.delete_outline ,color: AppColors.Img_BG,)
                         )
@@ -109,6 +107,35 @@ class _UserListScreenState extends State<UserListScreen> {
     SharedPrefernceHelper.saveUserList(userStringList);
     getList();
 
+  }
+
+
+
+  void showAboutDialog({required BuildContext context, int? index}) {
+    Widget okButton = TextButton(
+      child: Text("Delete"),
+      onPressed: () {
+        deleteRow(index!);
+        Navigator.of(context, rootNavigator: true).pop('dialog');
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Delete"),
+      content: Text("Are you sure to delete this item?"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 }

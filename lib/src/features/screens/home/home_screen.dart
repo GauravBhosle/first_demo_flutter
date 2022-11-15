@@ -1,3 +1,4 @@
+import 'package:first_demo_flutter/src/features/screens/get_api_calling/get_api_calling_screen.dart';
 import 'package:first_demo_flutter/src/features/screens/home/setting_screen.dart';
 import 'package:first_demo_flutter/src/features/screens/home/user_list/user_list_screen.dart';
 import 'package:first_demo_flutter/src/repository/authentication_repository/authentication_repository.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   int pageIndex = 0;
 
-  final screen = [UserListScreen(), FoodListScreen(), FavScreen(), Settings()];
+  final screen = [UserListScreen(), FoodListScreen(), GetApiCallingScreen(), Settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,7 @@ class _HomeScreen extends State<HomeScreen> {
             child: Material(
               child: IconButton(
                 icon: Icon(
-                  Icons.favorite,
+                  Icons.api,
                   color: AppColors.MAIN_COLOR,
                 ),
                 onPressed: () {
